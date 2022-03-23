@@ -1,0 +1,33 @@
+{
+  "name": "svelte-droplet",
+  "type": "module",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build:package": "svelte-kit package",
+    "build:site": "svelte-kit build",
+    "preview": "svelte-kit preview",
+    "lint": "prettier --plugin-search-dir=. --check src *.js && eslint src *.js && svelte-check",
+    "format": "prettier --plugin-search-dir=. --write src *.js && eslint --fix src *.js"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-static": "^1.0.0-next.29",
+    "@sveltejs/kit": "^1.0.0-next.303",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-svelte3": "^3.4.1",
+    "prettier": "^2.6.0",
+    "prettier-plugin-svelte": "^2.6.0",
+    "sass": "^1.49.9",
+    "svelte": "^3.46.4",
+    "svelte-check": "^2.4.6",
+    "svelte-preprocess": "^4.10.4",
+    "typescript": "^4.6.2"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "semi": false,
+    "singleQuote": true
+  }
+}
