@@ -1,5 +1,6 @@
 {
   "name": "svelte-droplet",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "svelte-kit dev",
@@ -55,6 +56,5 @@
     "printWidth": 100,
     "semi": false,
     "singleQuote": true
-  },
-  "version": "0.1.0"
+  }
 }
