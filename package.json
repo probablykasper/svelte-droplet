@@ -25,6 +25,30 @@
     "svelte-preprocess": "^4.10.4",
     "typescript": "^4.6.2"
   },
+  "license": "MIT",
+  "homepage": "https://svelte-droplet.kasper.space",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/probablykasper/svelte-droplet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/probablykasper/svelte-droplet/issues"
+  },
+  "author": {
+    "name": "Kasper Henningsen",
+    "url": "https://kasper.space"
+  },
+  "keywords": [
+    "svelte",
+    "file",
+    "filedrop",
+    "drag",
+    "drop",
+    "dropzone",
+    "upload",
+    "input",
+    "component"
+  ],
   "prettier": {
     "printWidth": 100,
     "semi": false,

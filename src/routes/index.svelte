@@ -1,5 +1,16 @@
+<script lang="ts">
+  import FileDrop from '$lib/FileDrop.svelte'
+</script>
+
+<svelte:head>
+  <title>Svelte Droplet</title>
+</svelte:head>
+
 <h1>Svelte Droplet</h1>
 <p>Hello <code>world</code></p>
+
+<p>Demo</p>
+<FileDrop>Upload a file</FileDrop>
 
 <style lang="sass">
   :global(body)
