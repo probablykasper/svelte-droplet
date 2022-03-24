@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.2 - 2022 Mar 24
+- Fix incorrect cursor
+
 ## 0.1.1 - 2022 Mar 24
 - Fix component not exported
 
