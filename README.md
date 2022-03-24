@@ -50,7 +50,7 @@ File dropzone for Svelte
 1. Update `CHANGELOG.md`
 2. Check for errors
     ```
-    npm run check
+    npm run lint
     ```
 3. Bump the version number
     ```
