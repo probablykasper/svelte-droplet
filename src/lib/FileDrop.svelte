@@ -121,9 +121,9 @@
 
 <style lang="sass">
   div
-    cursor: default
-  [disabled]
     cursor: pointer
+  [disabled]
+    cursor: default
   input
     display: none
 </style>
