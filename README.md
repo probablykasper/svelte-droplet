@@ -1,13 +1,25 @@
 # Svelte Droplet
 
+[![NPM](https://img.shields.io/npm/v/svelte-droplet.svg)](https://npmjs.com/package/svelte-droplet)
+[![License](https://img.shields.io/npm/l/svelte-droplet.svg)](LICENSE)
+[![NPM Downloads](https://img.shields.io/npm/dm/svelte-droplet.svg)](https://npmjs.com/package/svelte-droplet)
+[![test](https://github.com/probablykasper/svelte-droplet/actions/workflows/test.yml/badge.svg)](https://github.com/probablykasper/svelte-droplet/actions/workflows/test.yml)
+
 File dropzone for Svelte
 
 [REPL](https://svelte.dev/repl/961863cf346c474888b658b98dcbf287?version=3.46.4)
+
+## Install
+
+```
+npm install svelte-droplet
+```
 
 ## Usage
 
 ```svelte
 <script lang="ts">
+  import { FileDrop } from 'svelte-droplet'
   function handleFiles(files: File[]) {
     console.log(file.name)
   }
@@ -20,7 +32,7 @@ File dropzone for Svelte
 ## Props
 | Prop            | Type                    | Description           |
 | :-------------- | :---------------        | :-------------------- |
-| handleFiles     | (files: File[]) => void | File handler function |
+| `handleFiles`   | (files: File[]) => void | File handler function |
 | `acceptedMimes` | string[] \| null        | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are simply filtered out.<br>Null: all are allowed (default) |
 | `max`           | number \| null          | Max number of files allowed. Extra files are ignored. Defaults to 0 (no limit) |
 | `disabled`      | boolean                 | Disables the component |
