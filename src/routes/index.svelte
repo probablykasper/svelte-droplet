@@ -1,5 +1,10 @@
 <script lang="ts">
   import FileDrop from '$lib/FileDrop.svelte'
+
+  let handledFiles: File[] = []
+  function handleFiles(files: File[]) {
+    handledFiles = files
+  }
 </script>
 
 <svelte:head>
@@ -7,10 +12,22 @@
 </svelte:head>
 
 <h1>Svelte Droplet</h1>
-<p>Hello <code>world</code></p>
 
 <p>Demo</p>
-<FileDrop>Upload a file</FileDrop>
+<div class="container">
+  <FileDrop acceptedMimes={['image/png']} {handleFiles} let:droppable>
+    <div class="zone">
+      {#if droppable}
+        Drop a file
+      {:else}
+        Upload a file
+      {/if}
+      {#each handledFiles as file}
+        <p class="file">{file.name}</p>
+      {/each}
+    </div>
+  </FileDrop>
+</div>
 
 <style lang="sass">
   :global(body)
@@ -22,8 +39,15 @@
     text-align: center
   h1
     color: #00c3ff
-  code
+  .container
+    display: inline-block
+  .zone
     background: #282b33
-    padding: 2px 5px
+    display: inline-block
+    width: 560px
+    padding: 40px 0px
     border-radius: 4px
+  .file
+    margin-top: 10px
+    margin-bottom: 0px
 </style>

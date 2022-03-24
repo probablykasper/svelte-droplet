@@ -1,51 +1,98 @@
 <script lang="ts">
-  export let handleFiles: (files: FileList) => void = () => {
+  export let handleFiles: (files: File[]) => void = () => {
     /* noop */
   }
+
+  /**
+   * List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are simply filtered out.
+   *
+   * Null: all file extensions are allowed (default)
+   */
+  export let acceptedMimes: string[] | null = null
 
   let droppable = false
   let input: HTMLInputElement
 
-  function handleEnter() {
-    droppable = true
+  function getAcceptedFiles(files: FileList | File[] = []): File[] {
+    let acceptedFiles = []
+    for (let i = 0; i < files.length; i++) {
+      if (acceptedMimes === null || isAcceptedMime(files[i].type)) {
+        acceptedFiles.push(files[i])
+      }
+    }
+    return acceptedFiles
   }
 
-  function handleLeave() {
+  function isAcceptedMime(mime: string): boolean {
+    if (acceptedMimes === null) {
+      return true
+    }
+    for (const acceptedMime of acceptedMimes) {
+      if (acceptedMime === 'application/*' && mime.startsWith('application/')) {
+        return true
+      } else if (acceptedMime === 'audio/*' && mime.startsWith('audio/')) {
+        return true
+      } else if (acceptedMime === 'video/*' && mime.startsWith('video/')) {
+        return true
+      } else if (acceptedMime === 'image/*' && mime.startsWith('image/')) {
+        return true
+      } else if (acceptedMime === 'text/*' && mime.startsWith('text/')) {
+        return true
+      } else if (mime === acceptedMime) {
+        return true
+      }
+    }
+    return false
+  }
+
+  function dragOver(e: DragEvent) {
+    const items = Array.from(e.dataTransfer?.items || [])
+    for (const item of items) {
+      if (item.kind === 'file' && isAcceptedMime(item.type)) {
+        droppable = true
+        return
+      }
+    }
+  }
+
+  function dragLeave() {
     droppable = false
   }
 
-  function handleDrop(e: DragEvent) {
-    e.preventDefault()
-    const files = e.dataTransfer?.files
-    if (files) {
-      handleFiles(files)
+  function drop(e: DragEvent) {
+    const acceptedFiles = getAcceptedFiles(e.dataTransfer?.files)
+    if (acceptedFiles.length > 0) {
+      handleFiles(acceptedFiles)
     }
     droppable = false
   }
 
-  function handleDragOver(e: DragEvent) {
-    e.preventDefault()
-  }
-
-  let files: FileList
-  function handleChange(e: Event) {
-    e.preventDefault()
-    if (files && files.length > 0) {
-      handleFiles(files)
+  let inputFiles: FileList
+  function handleChange() {
+    const acceptedFiles = getAcceptedFiles(inputFiles)
+    if (acceptedFiles && acceptedFiles.length > 0) {
+      handleFiles(acceptedFiles)
     }
   }
 </script>
 
 <div
-  on:drop={handleDrop}
-  on:dragover={handleDragOver}
-  on:dragenter={handleEnter}
-  on:dragleave={handleLeave}
+  on:drop|preventDefault={drop}
+  on:dragover|preventDefault={dragOver}
+  on:dragenter|preventDefault={dragOver}
+  on:dragleave|preventDefault={dragLeave}
   on:click={() => input.click()}
 >
   <slot {droppable}>Upload</slot>
 </div>
-<input type="file" bind:files on:change={handleChange} bind:this={input} multiple />
+<input
+  type="file"
+  accept={acceptedMimes === null ? null : acceptedMimes.join(',')}
+  bind:files={inputFiles}
+  on:change|preventDefault={handleChange}
+  bind:this={input}
+  multiple
+/>
 
 <style lang="sass">
   input
