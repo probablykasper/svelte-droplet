@@ -15,7 +15,7 @@
 
 <p>Demo</p>
 <div class="container">
-  <FileDrop acceptedMimes={['image/png']} {handleFiles} let:droppable>
+  <FileDrop acceptedMimes={['image/png']} {handleFiles} disabled let:droppable>
     <div class="zone">
       {#if droppable}
         Drop a file

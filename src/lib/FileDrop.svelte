@@ -17,7 +17,14 @@
    */
   export let max = 0
 
+  /**
+   * Disables the component
+   */
+  export let disabled = false
+
   let droppable = false
+  $: if (disabled) droppable = false
+
   let input: HTMLInputElement
 
   function getAcceptedFiles(files: FileList | File[] = []): File[] {
@@ -56,6 +63,9 @@
   }
 
   function dragOver(e: DragEvent) {
+    if (disabled) {
+      return
+    }
     const items = Array.from(e.dataTransfer?.items || [])
     for (const item of items) {
       if (item.kind === 'file' && isAcceptedMime(item.type)) {
@@ -70,6 +80,9 @@
   }
 
   function drop(e: DragEvent) {
+    if (disabled) {
+      return
+    }
     const acceptedFiles = getAcceptedFiles(e.dataTransfer?.files)
     if (acceptedFiles.length > 0) {
       handleFiles(acceptedFiles)
@@ -103,10 +116,13 @@
   bind:files={inputFiles}
   on:change|preventDefault={handleChange}
   bind:this={input}
+  {disabled}
 />
 
 <style lang="sass">
   div
+    cursor: default
+  [disabled]
     cursor: pointer
   input
     display: none

@@ -16,10 +16,12 @@ File dropzone for Svelte
 ```
 
 ## Props
-| Prop            | Type             | Description                                  |
-| :-------------- | :--------------- | :------------------------------------------- |
-| `acceptedMimes` | string[] \| null | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are simply filtered out.<br>Null: all are allowed (default) |
-| `max`           | number \| null   | Max number of files allowed. Extra files are ignored. Defaults to 0 (no limit) |
+| Prop            | Type                    | Description           |
+| :-------------- | :---------------        | :-------------------- |
+| handleFiles     | (files: File[]) => void | File handler function |
+| `acceptedMimes` | string[] \| null        | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are simply filtered out.<br>Null: all are allowed (default) |
+| `max`           | number \| null          | Max number of files allowed. Extra files are ignored. Defaults to 0 (no limit) |
+| `disabled`      | boolean                 | Disables the component |
 
 ## Slot props
 | Prop         | Type     | Description   |
