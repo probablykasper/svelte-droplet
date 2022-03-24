@@ -1,1 +1,1 @@
-export { default as FileDrop } from './DateInput.svelte'
+export { default as FileDrop } from './FileDrop.svelte'
