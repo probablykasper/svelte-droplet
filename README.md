@@ -33,7 +33,7 @@ npm install svelte-droplet
 | Prop            | Type                    | Description           |
 | :-------------- | :---------------        | :-------------------- |
 | `handleFiles`   | (files: File[]) => void | File handler function |
-| `acceptedMimes` | string[] \| null        | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are simply filtered out.<br>Null: all are allowed (default) |
+| `acceptedMimes` | string[] \| null        | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are ignored.<br>Null: all are allowed (default) |
 | `max`           | number \| null          | Max number of files allowed. Extra files are ignored. Defaults to 0 (no limit) |
 | `disabled`      | boolean                 | Disables the component |
 
@@ -49,7 +49,7 @@ npm install svelte-droplet
 1. Install Node.js (v14 works)
 2. Run `npm install`
 
-## Commands
+### Commands
 
 - `npm run dev`: Start in dev mode
 - `npm run build`: Build
