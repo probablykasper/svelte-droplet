@@ -2,6 +2,8 @@
 
 File dropzone for Svelte
 
+[REPL](https://svelte.dev/repl/961863cf346c474888b658b98dcbf287?version=3.46.4)
+
 ## Usage
 
 ```svelte
