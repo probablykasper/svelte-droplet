@@ -11,11 +11,20 @@ File dropzone for Svelte
   }
 </script>
 <FileDrop {handleFiles} let:droppable>
-  <div class="zone" class:droppable>
-    Select or drop files here
-  </div>
+  <div class="zone" class:droppable>Select or drop files here</div>
 </FileDrop>
 ```
+
+## Props
+| Prop            | Type             | Description                                  |
+| :-------------- | :--------------- | :------------------------------------------- |
+| `acceptedMimes` | string[] \| null | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are simply filtered out.<br>Null: all are allowed (default) |
+| `max`           | number \| null   | Max number of files allowed. Extra files are ignored. Defaults to 0 (no limit) |
+
+## Slot props
+| Prop         | Type     | Description   |
+| :----------- | :------- | :------------ |
+| `droppable`  | boolean  | True if the dropzone is currently hovered with valid files |
 
 ## Dev instructions
 

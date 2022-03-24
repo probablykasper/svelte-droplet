@@ -4,11 +4,18 @@
   }
 
   /**
-   * List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are simply filtered out.
+   * List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are ignored.
    *
-   * Null: all file extensions are allowed (default)
+   * Null: all are allowed (default)
    */
   export let acceptedMimes: string[] | null = null
+
+  /**
+   * Max number of files allowed. Extra files are ignored.
+   *
+   * Defaults to 0 (no limit)
+   */
+  export let max = 0
 
   let droppable = false
   let input: HTMLInputElement
@@ -19,6 +26,9 @@
       if (acceptedMimes === null || isAcceptedMime(files[i].type)) {
         acceptedFiles.push(files[i])
       }
+    }
+    if (max !== 0) {
+      acceptedFiles = acceptedFiles.slice(0, max)
     }
     return acceptedFiles
   }
@@ -81,6 +91,7 @@
   on:dragover|preventDefault={dragOver}
   on:dragenter|preventDefault={dragOver}
   on:dragleave|preventDefault={dragLeave}
+  tabindex="0"
   on:click={() => input.click()}
 >
   <slot {droppable}>Upload</slot>
@@ -88,13 +99,15 @@
 <input
   type="file"
   accept={acceptedMimes === null ? null : acceptedMimes.join(',')}
+  multiple={max !== 1}
   bind:files={inputFiles}
   on:change|preventDefault={handleChange}
   bind:this={input}
-  multiple
 />
 
 <style lang="sass">
+  div
+    cursor: pointer
   input
     display: none
 </style>
