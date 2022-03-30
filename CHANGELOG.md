@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Support pressing `Space` and `Enter` to upload
+
 ## 0.1.2 - 2022 Mar 24
 - Fix incorrect cursor
 

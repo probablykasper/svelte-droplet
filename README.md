@@ -21,7 +21,9 @@ npm install svelte-droplet
 <script lang="ts">
   import { FileDrop } from 'svelte-droplet'
   function handleFiles(files: File[]) {
-    console.log(file.name)
+    for (const file of files) {
+      console.log(file.name)
+    }
   }
 </script>
 <FileDrop {handleFiles} let:droppable>

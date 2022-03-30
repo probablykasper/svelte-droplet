@@ -1,6 +1,7 @@
 {
   "name": "svelte-droplet",
   "version": "0.1.2",
+  "description": "File dropzone for Svelte",
   "type": "module",
   "scripts": {
     "dev": "svelte-kit dev",

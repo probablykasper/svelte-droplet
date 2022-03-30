@@ -97,6 +97,13 @@
       handleFiles(acceptedFiles)
     }
   }
+
+  function keydown(e: KeyboardEvent) {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault()
+      input.click()
+    }
+  }
 </script>
 
 <div
@@ -105,6 +112,7 @@
   on:dragenter|preventDefault={dragOver}
   on:dragleave|preventDefault={dragLeave}
   tabindex="0"
+  on:keydown={keydown}
   on:click={() => input.click()}
 >
   <slot {droppable}>Upload</slot>
