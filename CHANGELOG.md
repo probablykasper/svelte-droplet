@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 0.1.3 - 2022 Mar 30
 - Support pressing `Space` and `Enter` to upload
 
 ## 0.1.2 - 2022 Mar 24
