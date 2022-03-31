@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 0.2.0 - 2022 Mar 31
 - Add `tabindex` property
 
 ## 0.1.3 - 2022 Mar 30
