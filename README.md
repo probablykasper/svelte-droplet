@@ -35,9 +35,10 @@ npm install svelte-droplet
 | Prop            | Type                    | Description           |
 | :-------------- | :---------------        | :-------------------- |
 | `handleFiles`   | (files: File[]) => void | File handler function |
-| `acceptedMimes` | string[] \| null        | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are ignored.<br>Null: all are allowed (default) |
+| `acceptedMimes` | string[] \| null        | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are ignored.<br>Defaults to `null` (all are allowed) |
 | `max`           | number \| null          | Max number of files allowed. Extra files are ignored. Defaults to 0 (no limit) |
 | `disabled`      | boolean                 | Disables the component |
+| `tabindex`      | number                  | Set a custom tabindex |
 
 ## Slot props
 | Prop         | Type     | Description   |

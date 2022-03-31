@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Add `tabindex` property
+
 ## 0.1.3 - 2022 Mar 30
 - Support pressing `Space` and `Enter` to upload
 

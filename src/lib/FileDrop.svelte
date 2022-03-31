@@ -6,6 +6,8 @@
   /**
    * List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are ignored.
    *
+   * Defaults to `null` (all are allowed)
+   *
    * Null: all are allowed (default)
    */
   export let acceptedMimes: string[] | null = null
@@ -21,6 +23,11 @@
    * Disables the component
    */
   export let disabled = false
+
+  /**
+   * Set a custom tabindex
+   */
+  export let tabindex = 0
 
   let droppable = false
   $: if (disabled) droppable = false
@@ -111,7 +118,7 @@
   on:dragover|preventDefault={dragOver}
   on:dragenter|preventDefault={dragOver}
   on:dragleave|preventDefault={dragLeave}
-  tabindex="0"
+  {tabindex}
   on:keydown={keydown}
   on:click={() => input.click()}
 >
