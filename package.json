@@ -9,7 +9,7 @@
     "build:package": "svelte-kit package",
     "build:site": "vite build",
     "preview": "vite preview",
-    "lint": "prettier --plugin-search-dir=. --check src *.js && eslint src *.js && svelte-check",
+    "lint": "prettier --plugin-search-dir=. --check src *.js && eslint src *.js && svelte-check --tsconfig ./tsconfig.json",
     "format": "prettier --plugin-search-dir=. --write src *.js && eslint --fix src *.js"
   },
   "devDependencies": {
