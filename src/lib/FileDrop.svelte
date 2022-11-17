@@ -121,6 +121,8 @@
   {tabindex}
   on:keydown={keydown}
   on:click={() => input.click()}
+  role="button"
+  aria-label="File Upload"
 >
   <slot {droppable}>Upload</slot>
 </div>

@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Add `role` and `aria-label` accessibility attributes
+
 ## 0.2.0 - 2022 Mar 31
 - Add `tabindex` property
 
