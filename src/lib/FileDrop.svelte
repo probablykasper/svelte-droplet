@@ -25,6 +25,11 @@
   export let disabled = false
 
   /**
+   * Name of the input field, useful for forms
+   */
+  export let name: string | null | undefined = undefined
+
+  /**
    * Set a custom tabindex
    */
   export let tabindex = 0
@@ -134,6 +139,7 @@
   on:change|preventDefault={handleChange}
   bind:this={input}
   {disabled}
+  {name}
 />
 
 <style lang="sass">

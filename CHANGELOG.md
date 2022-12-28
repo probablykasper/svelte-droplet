@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Add `name` property
+
 ## 0.2.1 - 2022 Nov 18
 - Add `role` and `aria-label` accessibility attributes
 

@@ -38,6 +38,7 @@ npm install svelte-droplet
 | `acceptedMimes` | string[] \| null        | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are ignored.<br>Defaults to `null` (all are allowed) |
 | `max`           | number \| null          | Max number of files allowed. Extra files are ignored. Defaults to 0 (no limit) |
 | `disabled`      | boolean                 | Disables the component |
+| `name`          | string \| null          | Name of the input field, useful for forms |
 | `tabindex`      | number                  | Set a custom tabindex |
 
 ## Slot props
