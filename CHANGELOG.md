@@ -1,6 +1,6 @@
 # Changelog
 
-## Next
+## 0.3.0 - 2022 Dec 28
 - Add `name` property
 
 ## 0.2.1 - 2022 Nov 18
