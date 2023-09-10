@@ -19,15 +19,15 @@ npm install svelte-droplet
 
 ```svelte
 <script lang="ts">
-  import { FileDrop } from 'svelte-droplet'
-  function handleFiles(files: File[]) {
-    for (const file of files) {
-      console.log(file.name)
-    }
-  }
+	import { FileDrop } from 'svelte-droplet'
+	function handleFiles(files: File[]) {
+		for (const file of files) {
+			console.log(file.name)
+		}
+	}
 </script>
 <FileDrop {handleFiles} let:droppable>
-  <div class="zone" class:droppable>Select or drop files here</div>
+	<div class="zone" class:droppable>Select or drop files here</div>
 </FileDrop>
 ```
 
@@ -65,20 +65,20 @@ npm install svelte-droplet
 
 1. Update `CHANGELOG.md`
 2. Check for errors
-    ```
-    npm run lint
-    ```
+	```
+	npm run lint
+	```
 3. Bump the version number
-    ```
-    npm version --no-git-tag <version>
-    ```
+	```
+	npm version --no-git-tag <version>
+	```
 4. Generate the package
-    ```
-    npm run build:package
-    ```
+	```
+	npm run build:package
+	```
 5. Publish the package
-    ```
-    npm publish ./package
-    ```
+	```
+	npm publish ./package
+	```
 6. Commit with a tag in format "v#.#.#"
 7. Create GitHub release with release notes
