@@ -29,6 +29,9 @@
     "typescript": "^5.2.2",
     "vite": "^4.4.9"
   },
+  "peerDependencies": {
+    "svelte": "^3.0.0 || ^4.0.0"
+  },
   "license": "MIT",
   "homepage": "https://svelte-droplet.kasper.space",
   "repository": {
