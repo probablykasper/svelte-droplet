@@ -9,25 +9,25 @@
     "build:package": "svelte-package",
     "build:site": "vite build",
     "preview": "vite preview",
-    "lint": "prettier --check src *.js && eslint src *.js && svelte-check --tsconfig ./tsconfig.json",
+    "lint": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json && eslint src && prettier --check src",
     "format": "prettier --write src *.js && eslint --fix src *.js"
   },
   "devDependencies": {
-    "@sveltejs/adapter-static": "^2.0.1",
-    "@sveltejs/kit": "^1.8.3",
+    "@sveltejs/adapter-static": "^2.0.3",
+    "@sveltejs/kit": "^1.24.1",
     "@sveltejs/package": "^1.0.2",
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
-    "@typescript-eslint/parser": "^5.53.0",
-    "eslint": "^8.34.0",
-    "eslint-config-prettier": "^8.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-svelte3": "^4.0.0",
-    "prettier": "^2.8.4",
-    "prettier-plugin-svelte": "^2.9.0",
-    "sass": "^1.58.3",
-    "svelte": "^3.55.1",
-    "svelte-check": "^3.0.3",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.3"
+    "prettier": "^2.0.3",
+    "prettier-plugin-svelte": "^2.0.3",
+    "sass": "^1.66.1",
+    "svelte": "^3.59.2",
+    "svelte-check": "^3.5.1",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9"
   },
   "license": "MIT",
   "homepage": "https://svelte-droplet.kasper.space",
@@ -57,8 +57,8 @@
     "printWidth": 100,
     "semi": false,
     "singleQuote": true,
-    "pluginSearchDirs": [
-      "."
+    "plugins": [
+      "prettier-plugin-svelte"
     ]
   }
 }
