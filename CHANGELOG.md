@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Support file extensions like `.jpg` in `acceptedMimes`, but with the caveat that it will not enable `droppable` when hovering.
+
 ## 0.3.0 - 2022 Dec 28
 - Add `name` property
 

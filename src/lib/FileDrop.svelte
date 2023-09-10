@@ -4,11 +4,11 @@
   }
 
   /**
-   * List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are ignored.
+   * List of allowed MIME types, like `image/jpeg` or `image/*`. Invalid files are ignored.
+   *
+   * You can also use file extensions like `.jpg` but it will not enable `droppable` when the file is hovering, meaning you can't display a hover effect.
    *
    * Defaults to `null` (all are allowed)
-   *
-   * Null: all are allowed (default)
    */
   export let acceptedMimes: string[] | null = null
 
@@ -42,7 +42,7 @@
   function getAcceptedFiles(files: FileList | File[] = []): File[] {
     let acceptedFiles = []
     for (let i = 0; i < files.length; i++) {
-      if (acceptedMimes === null || isAcceptedMime(files[i].type)) {
+      if (acceptedMimes === null || isAccepted(files[i])) {
         acceptedFiles.push(files[i])
       }
     }
@@ -52,22 +52,28 @@
     return acceptedFiles
   }
 
-  function isAcceptedMime(mime: string): boolean {
+  function isAccepted(item: DataTransferItem | File): boolean {
     if (acceptedMimes === null) {
       return true
     }
-    for (const acceptedMime of acceptedMimes) {
-      if (acceptedMime === 'application/*' && mime.startsWith('application/')) {
+    for (const acceptedType of acceptedMimes) {
+      if (acceptedType.startsWith('.')) {
+        const file = item instanceof DataTransferItem ? item.getAsFile() : item
+        if (file?.name.endsWith(acceptedType)) {
+          return true
+        }
+      }
+      if (acceptedType === 'application/*' && item.type.startsWith('application/')) {
         return true
-      } else if (acceptedMime === 'audio/*' && mime.startsWith('audio/')) {
+      } else if (acceptedType === 'audio/*' && item.type.startsWith('audio/')) {
         return true
-      } else if (acceptedMime === 'video/*' && mime.startsWith('video/')) {
+      } else if (acceptedType === 'video/*' && item.type.startsWith('video/')) {
         return true
-      } else if (acceptedMime === 'image/*' && mime.startsWith('image/')) {
+      } else if (acceptedType === 'image/*' && item.type.startsWith('image/')) {
         return true
-      } else if (acceptedMime === 'text/*' && mime.startsWith('text/')) {
+      } else if (acceptedType === 'text/*' && item.type.startsWith('text/')) {
         return true
-      } else if (mime === acceptedMime) {
+      } else if (item.type === acceptedType) {
         return true
       }
     }
@@ -80,7 +86,7 @@
     }
     const items = Array.from(e.dataTransfer?.items || [])
     for (const item of items) {
-      if (item.kind === 'file' && isAcceptedMime(item.type)) {
+      if (item.kind === 'file' && isAccepted(item)) {
         droppable = true
         return
       }

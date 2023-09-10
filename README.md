@@ -35,7 +35,7 @@ npm install svelte-droplet
 | Prop            | Type                    | Description           |
 | :-------------- | :---------------        | :-------------------- |
 | `handleFiles`   | (files: File[]) => void | File handler function |
-| `acceptedMimes` | string[] \| null        | List of allowed mime types, like `image/jpeg` or `image/*`. Invalid files are ignored.<br>Defaults to `null` (all are allowed) |
+| `acceptedMimes` | string[] \| null        | List of allowed MIME types, like `image/jpeg` or `image/*`. Invalid files are ignored.<br>You can also use file extensions like `.jpg` but it will not enable `droppable` when the file is hovering, meaning you can't display a hover effect.<br>Defaults to `null` (all are allowed) |
 | `max`           | number \| null          | Max number of files allowed. Extra files are ignored. Defaults to 0 (no limit) |
 | `disabled`      | boolean                 | Disables the component |
 | `name`          | string \| null          | Name of the input field, useful for forms |
