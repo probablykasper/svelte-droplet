@@ -15,7 +15,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.24.1",
-		"@sveltejs/package": "^1.0.2",
+		"@sveltejs/package": "^2.2.3",
 		"@typescript-eslint/eslint-plugin": "^6.6.0",
 		"@typescript-eslint/parser": "^6.6.0",
 		"eslint": "^8.49.0",
@@ -64,5 +64,32 @@
 		"plugins": [
 			"prettier-plugin-svelte"
 		]
+	},
+	"exports": {
+		"./package.json": "./package.json",
+		"./FileDrop.svelte": {
+			"types": "./dist/FileDrop.svelte.d.ts",
+			"svelte": "./dist/FileDrop.svelte",
+			"default": "./dist/FileDrop.svelte"
+		},
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js",
+			"default": "./dist/index.js"
+		}
+	},
+	"files": [
+		"package"
+	],
+	"svelte": "./dist/index.js",
+	"typesVersions": {
+		">4.0": {
+			"FileDrop.svelte": [
+				"./dist/FileDrop.svelte.d.ts"
+			],
+			"index.d.ts": [
+				"./dist/index.d.ts"
+			]
+		}
 	}
 }

@@ -1,5 +1,8 @@
 # Changelog
 
+## Next
+- Fix warnings about missing `package.json` exports conditions
+
 ## 1.0.0 - 2023 Sep 10
 - Support file extensions like `.jpg` in `acceptedMimes`, but with the caveat that it will not enable `droppable` when hovering.
 
