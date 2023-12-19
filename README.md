@@ -74,11 +74,11 @@ npm install svelte-droplet
 	```
 4. Generate the package
 	```
-	npm run build:package
+	npm run package
 	```
 5. Publish the package
 	```
-	npm publish ./package
+	npm publish
 	```
 6. Commit with a tag in format "v#.#.#"
 7. Create GitHub release with release notes
