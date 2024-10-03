@@ -1,42 +1,53 @@
 <script lang="ts">
-	export let handleFiles: (files: File[]) => void = () => {
-		/* noop */
+	import type { Snippet } from 'svelte'
+
+	interface FileDropOptions {
+		children: Snippet,
+		handleFiles: (files: File[]) => void,
+		droppable: boolean,
+		/**
+		 * List of allowed MIME types, like `image/jpeg` or `image/*`. Invalid files are ignored.
+		 *
+		 * You can also use file extensions like `.jpg` but it will not enable `droppable` when the file is hovering, meaning you can't display a hover effect.
+		 *
+		 * Defaults to `null` (all are allowed)
+		 */
+		acceptedMimes: string[] | null,
+		/**
+		 * Max number of files allowed. Extra files are ignored.
+		 *
+		 * Defaults to 0 (no limit)
+		 */
+		max: number,
+		/**
+		 * Disables the component
+		 */
+		disabled: boolean,
+		/**
+		 * Name of the input field, useful for forms
+		 */
+		name?: string,
+		/**
+		 * Set a custom tabindex
+		 */
+		tabindex: number
 	}
 
-	/**
-	 * List of allowed MIME types, like `image/jpeg` or `image/*`. Invalid files are ignored.
-	 *
-	 * You can also use file extensions like `.jpg` but it will not enable `droppable` when the file is hovering, meaning you can't display a hover effect.
-	 *
-	 * Defaults to `null` (all are allowed)
-	 */
-	export let acceptedMimes: string[] | null = null
+	let {
+		children,
+		handleFiles = (files: File[]) => {
+			/* noop */
+		},
+		droppable = $bindable(),
+		acceptedMimes = null,
+		max = 0,
+		disabled = false,
+		name,
+		tabindex = 0
+	}: FileDropOptions = $props()
 
-	/**
-	 * Max number of files allowed. Extra files are ignored.
-	 *
-	 * Defaults to 0 (no limit)
-	 */
-	export let max = 0
 
-	/**
-	 * Disables the component
-	 */
-	export let disabled = false
-
-	/**
-	 * Name of the input field, useful for forms
-	 */
-	export let name: string | null | undefined = undefined
-
-	/**
-	 * Set a custom tabindex
-	 */
-	export let tabindex = 0
-
-	let droppable = false
-	$: if (disabled) droppable = false
-
+	let inputFiles = $state<FileList>()
 	let input: HTMLInputElement
 
 	function getAcceptedFiles(files: FileList | File[] = []): File[] {
@@ -81,6 +92,7 @@
 	}
 
 	function dragOver(e: DragEvent) {
+		e.preventDefault();
 		if (disabled) {
 			return
 		}
@@ -98,6 +110,7 @@
 	}
 
 	function drop(e: DragEvent) {
+		e.preventDefault();
 		if (disabled) {
 			return
 		}
@@ -108,7 +121,6 @@
 		droppable = false
 	}
 
-	let inputFiles: FileList
 	function handleChange() {
 		const acceptedFiles = getAcceptedFiles(inputFiles)
 		if (acceptedFiles && acceptedFiles.length > 0) {
@@ -117,32 +129,38 @@
 	}
 
 	function keydown(e: KeyboardEvent) {
+		e.preventDefault()
 		if (e.key === ' ' || e.key === 'Enter') {
 			e.preventDefault()
 			input.click()
 		}
 	}
+
+	$effect(() => {
+		if (disabled) droppable = false
+	})
+
 </script>
 
 <div
-	on:drop|preventDefault={drop}
-	on:dragover|preventDefault={dragOver}
-	on:dragenter|preventDefault={dragOver}
-	on:dragleave|preventDefault={dragLeave}
+	ondrop={drop}
+	ondragover={dragOver}
+	ondragenter={dragOver}
+	ondragleave={dragLeave}
 	{tabindex}
-	on:keydown={keydown}
-	on:click={() => input.click()}
+	onkeydown={keydown}
+	onclick={() => input.click()}
 	role="button"
 	aria-label="File Upload"
 >
-	<slot {droppable}>Upload</slot>
+	{@render children()}
 </div>
 <input
 	type="file"
 	accept={acceptedMimes === null ? null : acceptedMimes.join(',')}
 	multiple={max !== 1}
 	bind:files={inputFiles}
-	on:change|preventDefault={handleChange}
+	onchange={handleChange}
 	bind:this={input}
 	{disabled}
 	{name}
