@@ -13,11 +13,11 @@
 
 <div class="row">
 	<h2 class="logo">Svelte Droplet</h2>
-	<div class="mr-auto" />
+	<div class="mr-auto"></div>
 
 	<a href="https://github.com/probablykasper/svelte-droplet#usage">Docs</a>
 	<a href="https://svelte.dev/repl/961863cf346c474888b658b98dcbf287?version=3.46.4">REPL</a>
-	<a href="https://github.com/probablykasper/svelte-droplet">
+	<a href="https://github.com/probablykasper/svelte-droplet" aria-label="GitHub repository">
 		<svg
 			height="24"
 			viewBox="-2 -2 28 28"
